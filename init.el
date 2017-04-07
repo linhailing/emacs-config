@@ -2,7 +2,45 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comment.
-(package-initialize)
+(when (>= emacs-major-version 24)
+    (require 'package)
+    (package-initialize)
+    (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+            ("melpa" . "http://elpa.emacs-china.org/melpa/"))))
+
+;; 注意 elpa.emacs-china.org 是 Emacs China 中文社区在国内搭建的一个 ELPA 镜像
+
+;; cl - Common Lisp Extension
+(require 'cl)
+;; Add Packages
+(defvar henry/packages '(
+        ;; --- Auto-completion ---
+        company
+        ;; add theme
+        monokai-theme
+        ;; 这个插件是删除多余的空格
+        hungry-delete
+        ;; 增强了搜索和文件查找功能的插件(swiper, )
+        swiper
+        counsel
+        exec-path-from-shell
+        ;; 补全(), , "",''....
+        smartparens
+        ) "Default packages")
+
+(setq package-selected-packages henry/packages)
+
+(defun henry/packages-installed-p ()
+    (loop for pkg in henry/packages
+        when (not (package-installed-p pkg)) do (return nil)
+       finally (return t)))
+
+(unless (henry/packages-installed-p)
+    (message "%s" "Refreshing package database...")
+    (package-refresh-contents)
+    (dolist (pkg henry/packages)
+    (when (not (package-installed-p pkg))
+        (package-install pkg))))
 
 ;; 关闭工具栏
 (tool-bar-mode -1)
@@ -50,15 +88,47 @@
 
 ;; 这一行代码，将函数 open-init-file绑定到<f2>键上
 (global-set-key (kbd "<f2>") 'open-init-file)
+
+;; plugin setting
+(require 'monokai-theme)
+(load-theme 'monokai 1)
+;; config setting by hungry-delete
+(require 'hungry-delete)
+(global-hungry-delete-mode)
+;; swiper && Counsel config setting
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "<f6>") 'ivy-resume)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+
+;; setting config by smartparens((),"",''{}...)
+(require 'smartparens-config)
+(smartparens-global-strict-mode t)
+
+;; gh-md
+
+
+
+;; plugin setting
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (company))))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+;; Find Executable Path on OS X
+(when (memq window-system '(mac ns))
+   (exec-path-from-shell-initialize))
