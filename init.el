@@ -27,6 +27,7 @@
 			 counsel
 			 smartparens
 			 js2-mode
+			 popwin
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
@@ -63,6 +64,8 @@
 
 ;; 关闭备份文件
 (setq make-backup-files nil)
+;; disable auto-save-list
+(setq auto-save-default nil)
 
 ;; org edit
 (require 'org)
@@ -119,6 +122,21 @@
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-k") 'find-function-on-key)
+
+;; 当外部修改是自动加载文件
+(global-auto-revert-mode t)
+
+;; popwin setting
+(require 'popwin)
+(popwin-mode t)
+
+;; abbrev-mode
+(abbrev-mode t)
+(define-abbrev-table 'global-abbrev-table '(
+					    ("ll" "henry")
+					    ("ms" "macrosoft")
+					    ))
+
 
 ;; 定义一个lisp测试函数
 (defun open-my-init()
