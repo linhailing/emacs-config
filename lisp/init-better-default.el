@@ -45,7 +45,7 @@
 ;; 代码的缩进功能设置key
 (global-set-key (kbd "C-M-f") 'indent-region-or-buffer)
 
-
+;; 代码提示hippie-expand
 (setq hippie-expand-try-functions-list '(try-expand-dabbrev
 					 try-expand-dabbrev-all-buffers
 					 try-expand-dabbrev-from-kill
@@ -56,7 +56,36 @@
 					 try-expand-line
 					 try-complete-lisp-symbol-partially
 					 try-complete-lisp-symbol))
+(global-set-key (kbd "M-/") 'hippie-expand)
 
+;; 使用C-x d 可以cmd创建文件和复制，copy文件等
+;; 怎么使用 dired
+;; 1. copy, delete and rename file
+;; Copy/Delete/Rname files and folders
+;; +: to create directory
+;; C-x C-f: to create file
+;; g: to refersh dired buffer
+;; C: copy file
+;; d: delete file
+;; D: delete after confirm
+;; R: rename files
+(setq dired-recursive-deletes 'always)
+(setq dired-recursive-copies 'always)
+(put 'dired-find-alternate-file 'disabled nil)
+
+;; 主动加载 Dired Mode
+;; (require 'dired)
+;; (defined-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+
+;; 启用 dired-x 可以让每一次进入 Dired 模式时，使用新的快捷键 C-x C-j
+;; 就可以进 入当前文件夹的所在的路径。
+(require 'dired-x)
+
+(setq dired-dwin-target 1)
+
+;; 延迟加载
+(with-eval-after-load 'dired
+    (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
 
 ;; 文件末尾
 (provide 'init-better-default)
