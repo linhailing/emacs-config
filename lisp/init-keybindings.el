@@ -18,8 +18,7 @@
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-k") 'find-function-on-key)
 
-;; 代码的缩进功能设置key
-(global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
+
 
 ;; 文件末尾
 (provide 'init-keybindings)

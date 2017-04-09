@@ -25,6 +25,8 @@
 			 smartparens
 			 js2-mode
 			 popwin
+			 markdown-mode
+			 expand-region
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
