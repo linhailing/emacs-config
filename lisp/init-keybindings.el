@@ -23,5 +23,15 @@
 ;; M-s o(occur),  M-s i(counsel-items), C-;(iedit-mode)
 (global-set-key (kbd "C-;") 'iedit-mode)
 
+;; 当补全菜单显示出来以后可以使用C-n C-p来选择
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous))
+
+;; use helm-age search
+(global-set-key (kbd "C-c p s") 'helm-do-ag-project-root)
+
 ;; 文件末尾
 (provide 'init-keybindings)

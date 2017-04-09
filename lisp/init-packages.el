@@ -10,8 +10,8 @@
 ;; cl - Common Lisp Extension
 (require 'cl)
 ;; Add Packages
-(defvar henry/packages '(
-			 ;; --- Auto-completion ---
+    (defvar henry/packages '(
+    			 ;; --- Auto-completion ---
 			 company
 			 ;; --- Better Editor ---
 			 exec-path-from-shell
@@ -29,12 +29,13 @@
 			 expand-region
 			 web-mode
 			 iedit
+			 helm-ag
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
 
 (defun henry/packages-installed-p ()
-    (loop for pkg in henry/packages
+        (loop for pkg in henry/packages
         when (not (package-installed-p pkg)) do (return nil)
        finally (return t)))
 
