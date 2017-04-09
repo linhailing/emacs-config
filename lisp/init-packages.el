@@ -30,6 +30,9 @@
 			 web-mode
 			 iedit
 			 helm-ag
+			 flycheck
+			 yasnippet
+			 auto-yasnippet
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
@@ -86,6 +89,17 @@
 ;; hungry-delete
 ;;(require 'hungry-delete)
 (global-hungry-delete-mode t)
+
+;; flycheck-mode
+(global-flycheck-mode t)
+
+;; yasnippet
+;;(yas-reload-all)
+;;(add-hook 'prog-mode-hook #'yas-minor-mode)
+(require 'yasnippet)
+;;(yas-global-mode 1)
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
 
 
 ;; 文件末尾
