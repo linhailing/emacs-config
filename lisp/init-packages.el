@@ -33,6 +33,8 @@
 			 flycheck
 			 yasnippet
 			 auto-yasnippet
+			 evil
+			 evil-leader
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
@@ -100,6 +102,25 @@
 ;;(yas-global-mode 1)
 (yas-reload-all)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
+
+;; evil
+(evil-mode t)
+(setcdr evil-insert-state-map nil)
+(define-key evil-insert-state-map [escape] 'evil-normal-state)
+;; eval-laeader key
+(global-evil-leader-mode)
+(evil-leader/set-key
+  "ff" 'find-file
+  "bb" 'switch-to-buffer
+  "0"  'select-window-0
+  "1"  'select-window-1
+  "2"  'select-window-2
+  "3"  'select-window-3
+  "w/" 'split-window-right
+  "w-" 'split-window-below
+  ":"  'counsel-M-x
+  "wM" 'delete-other-windows
+  )
 
 
 ;; 文件末尾

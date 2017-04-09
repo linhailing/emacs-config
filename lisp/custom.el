@@ -10,6 +10,7 @@
  '(custom-safe-themes
    (quote
     ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
+ '(evil-want-C-u-scroll t)
  '(package-selected-packages
    (quote
     (yasnippet company exec-path-from-shell monokai-theme hungry-delete swiper counsel smartparens js2-mode popwin markdown-mode expand-region web-mode iedit helm-ag flycheck)))

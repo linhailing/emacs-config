@@ -24,7 +24,7 @@
 
 (global-set-key (kbd "<f2>") 'open-my-init)
 
-
+ 
 ;; Find Executable Path on OS X
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
