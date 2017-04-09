@@ -95,5 +95,20 @@
 	     (ignore-errors (backward-up-list))
 	     (funcall fn)))))
 
+;; 增强occur的搜索功能，当鼠标在一个单词上时，他会自动抓取这个单词使用 M-s o 来搜索
+(defun occur-dwim ()
+  "Call `occur' with a sane default."
+  (interactive)
+  (push (if (region-active-p)
+	    (buffer-substring-no-properties
+	     (region-beginning)
+	     (region-end))
+	  (let ((sym (thing-at-point 'symbol)))
+	    (when (stringp sym)
+	      (regexp-quote sym))))
+	regexp-history)
+  (call-interactively 'occur))
+(global-set-key (kbd "M-s o") 'occur-dwim)
+
 ;; 文件末尾
 (provide 'init-better-default)

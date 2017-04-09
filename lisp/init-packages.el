@@ -27,6 +27,7 @@
 			 popwin
 			 markdown-mode
 			 expand-region
+			 web-mode
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
@@ -72,7 +73,8 @@
 ;; config js2-mode for js files
 (setq auto-mode-alist
       (append
-       '(("\\.js\\'" . js2-mode))
+       '(("\\.js\\'" . js2-mode)
+	 ("\\.html\\'" . web-mode))
        auto-mode-alist))
 
 ;; popwin setting
