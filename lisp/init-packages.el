@@ -28,6 +28,7 @@
 			 markdown-mode
 			 expand-region
 			 web-mode
+			 iedit
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
