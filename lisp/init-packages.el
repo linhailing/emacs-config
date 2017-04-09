@@ -66,6 +66,8 @@
 ;;匹配()，""， ''
 (require 'smartparens-config)
 (smartparens-global-strict-mode t)
+;; 在某个文件类型中不让“'”成对出现
+(sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
 
 ;; config js2-mode for js files
 (setq auto-mode-alist
