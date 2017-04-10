@@ -35,6 +35,11 @@
 			 auto-yasnippet
 			 evil
 			 evil-leader
+			 window-numbering
+			 powerline
+			 evil-surround
+			 evil-nerd-commenter
+			 which-key
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
@@ -112,6 +117,7 @@
 (evil-leader/set-key
   "ff" 'find-file
   "bb" 'switch-to-buffer
+  "ps" 'helm-ag-project-root
   "0"  'select-window-0
   "1"  'select-window-1
   "2"  'select-window-2
@@ -120,7 +126,25 @@
   "w-" 'split-window-below
   ":"  'counsel-M-x
   "wM" 'delete-other-windows
-  )
+  "qq" 'save-buffers-kill-emacs)
+;; window-numbering true
+(window-numbering-mode t)
+
+;; setting config powerline
+(require 'powerline)
+;;(powerline-default-theme)
+;;(powerline-center-evil-theme)
+(powerline-vim-theme)
+;; evil-surround config
+(require 'evil-surround)
+(global-evil-surround-mode 1)
+;; evil-normal
+(evilnc-default-hotkeys)
+(define-key evil-normal-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
+(define-key evil-visual-state-map (kbd ",/") 'evilnc-comment-or-uncomment-lines)
+;; which-key
+(which-key-mode t)
+(setq which-key-side-window-location 'right)
 
 
 ;; 文件末尾

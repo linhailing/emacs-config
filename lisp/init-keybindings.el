@@ -31,7 +31,7 @@
   (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
 ;; use helm-age search
-(global-set-key (kbd "C-c p s") 'helm-do-ag-project-root)
+;;(global-set-key (kbd "C-c p s") 'helm-do-ag-project-root)
 
 ;; auto-yas
 (global-set-key (kbd "H-w") #'aya-create)

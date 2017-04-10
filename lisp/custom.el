@@ -10,6 +10,7 @@
  '(custom-safe-themes
    (quote
     ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
+ '(evil-leader/leader "SPC")
  '(evil-want-C-u-scroll t)
  '(package-selected-packages
    (quote
