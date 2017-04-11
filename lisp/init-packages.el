@@ -40,6 +40,7 @@
 			 evil-surround
 			 evil-nerd-commenter
 			 which-key
+			 company-anaconda
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
@@ -78,7 +79,8 @@
 
 ;;匹配()，""， ''
 (require 'smartparens-config)
-(smartparens-global-strict-mode t)
+;; (smartparens-global-strict-mode t)
+(smartparens-global-mode t)
 ;; 在某个文件类型中不让“'”成对出现
 (sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
 
@@ -97,8 +99,9 @@
 ;;(require 'hungry-delete)
 (global-hungry-delete-mode t)
 
-;; flycheck-mode
-(global-flycheck-mode t)
+;; flycheck-mode 这里只是检查js
+;; (global-flycheck-mode t)
+(add-hook 'js2-mode-hook 'flycheck-mode)
 
 ;; yasnippet
 ;;(yas-reload-all)
@@ -131,10 +134,10 @@
 (window-numbering-mode t)
 
 ;; setting config powerline
-(require 'powerline)
+;;(require 'powerline)
 ;;(powerline-default-theme)
 ;;(powerline-center-evil-theme)
-(powerline-vim-theme)
+;;(powerline-vim-theme)
 ;; evil-surround config
 (require 'evil-surround)
 (global-evil-surround-mode 1)
@@ -146,6 +149,15 @@
 (which-key-mode t)
 (setq which-key-side-window-location 'right)
 
-
+;; python confing
+(add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (set (make-local-variable 'company-backends) '((company-anaconda company-dabbrev-code)
+							   company-dabbrev)))
+	  )
+;; 有时候很卡的原因
+(setq tramp-ssh-controlmaster-options
+      "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 ;; 文件末尾
 (provide 'init-packages)
