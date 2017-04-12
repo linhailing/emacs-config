@@ -18,6 +18,8 @@
 			 ;; --- Themes ---
 			 monokai-theme
 			 ;; solarized-theme
+			 ;; git theme
+			 github-theme
 			 ;; --- Better Editor ---
 			 hungry-delete
 			 swiper
@@ -70,7 +72,8 @@
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
 ;; 设置theme
-(load-theme 'monokai t)
+;; (load-theme 'monokai t)
+(load-theme 'github t)
 
 ;; swiper
 (ivy-mode 1)
