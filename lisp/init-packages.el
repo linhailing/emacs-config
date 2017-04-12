@@ -44,6 +44,8 @@
 			 which-key
 			 company-anaconda
 			 emmet-mode
+			 php-mode
+			 ac-php
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
@@ -92,7 +94,8 @@
 (setq auto-mode-alist
       (append
        '(("\\.js\\'" . js2-mode)
-	 ("\\.html\\'" . web-mode))
+	 ("\\.html\\'" . web-mode)
+	 ("\\.php\\'" . php-mode))
        auto-mode-alist))
 
 ;; popwin setting
@@ -167,6 +170,25 @@
 ;; emment config
 (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+
+;; php-mode config
+(eval-after-load 'php-mode
+  '(require 'php-ext))
+(with-eval-after-load 'php-mode
+  (require 'php-current)
+  (define-key php-mode-map (kbd "C-c C--") 'php-current-class)
+  (define-key php-mode-map (kbd "C-c C-=") 'php-current-namespace))
+(add-hook 'php-mode-hook
+            '(lambda ()
+               (auto-complete-mode t)
+               (require 'ac-php)
+               (setq ac-sources  '(ac-source-php ) )
+               (yas-global-mode 1)
+               (ac-php-core-eldoc-setup ) ;; enable eldoc
+
+               (define-key php-mode-map  (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
+               (define-key php-mode-map  (kbd "C-t") 'ac-php-location-stack-back   ) ;go back
+               ))
 
 ;; 文件末尾
 (provide 'init-packages)
