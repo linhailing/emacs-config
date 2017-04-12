@@ -43,6 +43,7 @@
 			 evil-nerd-commenter
 			 which-key
 			 company-anaconda
+			 emmet-mode
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
@@ -162,5 +163,10 @@
 ;; 有时候很卡的原因
 (setq tramp-ssh-controlmaster-options
       "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+
+;; emment config
+(add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+
 ;; 文件末尾
 (provide 'init-packages)
