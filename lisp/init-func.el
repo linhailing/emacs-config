@@ -16,7 +16,16 @@
 )
 (add-hook 'web-mode-hook  'web-mode-base-settings)
 
-
+;; 设置css,js的index长度为2(2个空格)
+(defun set-css-index-size()
+  "Hooks for css mode and js2-mode"
+  (setq css-indent-offset 2))
+(add-hook 'css-mode-hook 'set-css-index-size)
+;; js
+(defun set-js-index-size()
+  "Hooks for css mode and js2-mode"
+  (setq js-indent-level 2))
+(add-hook 'js2-mode-hook 'set-js-index-size)
 
 ;; 文件末尾
 (provide 'init-func)

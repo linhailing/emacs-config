@@ -44,6 +44,60 @@
 
 ;; 代码的缩进功能设置key
 (global-set-key (kbd "C-M-f") 'indent-region-or-buffer)
+;; 大多数编辑器都是使用tab键来缩进代码的，如下设置
+;; 因为 Emacs 的每个 major mode 所使用的缩进配置都不一样，有时候我们只想像其他编辑器一样使用 TAB 来缩进，Shift+TAB 向后缩进。
+;; my fix for tab indent
+(defun henry/indent-region(numSpaces)
+  (progn
+    ;; default to start and end of current line
+    (setq regionStart (line-beginning-position))
+    (setq regionEnd (line-end-position))
+    ;; if there's a selection, use that instead of the current line
+    (when (use-region-p)
+      (setq regionStart (region-beginning))
+      (setq regionEnd (region-end))
+      )
+    (save-excursion                          ;; restore the position afterwards
+      (goto-char regionStart)                ;; go to the start of region
+      (setq start (line-beginning-position)) ;; save the start of the line
+      (goto-char regionEnd)                  ;; go to the end of region
+      (setq end (line-end-position))         ;; save the end of the line
+      (indent-rigidly start end numSpaces) ;; indent between start and end
+      (setq deactivate-mark nil)           ;; restore the selected region
+      )
+    )
+  )
+
+
+(defun henry/tab-region (N)
+  (interactive "p")
+  (if (use-region-p)
+      (henry/indent-region 4)               ;; region was selected, call indent-region
+    (insert "    ")                   ;; else insert four spaces as expected
+    ))
+
+(defun henry/untab-region (N)
+  (interactive "p")
+  (henry/indent-region -4))
+
+(defun henry/hack-tab-key ()
+  (interactive)
+  (local-set-key (kbd "<tab>") 'henry/tab-region)
+  (local-set-key (kbd "<S-tab>") 'henry/untab-region)
+  )
+
+;; emment-mode 使用的快捷键是C-j来补全的，现在修改为Tab键
+(evil-define-key 'insert emmet-mode-keymap (kbd "TAB") 'emmet-expand-yas)
+(evil-define-key 'insert emmet-mode-keymap (kbd "<tab>") 'emmet-expand-yas)
+(evil-define-key 'emacs emmet-mode-keymap (kbd "TAB") 'emmet-expand-yas)
+(evil-define-key 'emacs emmet-mode-keymap (kbd "<tab>") 'emmet-expand-yas)
+(evil-define-key 'hybrid emmet-mode-keymap (kbd "TAB") 'emmet-expand-yas)
+(evil-define-key 'hybrid emmet-mode-keymap (kbd "<tab>") 'emmet-expand-yas)
+
+
+(add-hook 'prog-mode-hook 'henry/hack-tab-key)
+
+
 
 ;; 代码提示hippie-expand
 (setq hippie-expand-try-functions-list '(try-expand-dabbrev
