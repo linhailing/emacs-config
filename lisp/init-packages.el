@@ -16,10 +16,10 @@
 			 ;; --- Better Editor ---
 			 exec-path-from-shell
 			 ;; --- Themes ---
-			 monokai-theme
+			 ;; monokai-theme
 			 ;; solarized-theme
 			 ;; git theme
-			 github-theme
+			 ;; github-theme
 			 ;; --- Better Editor ---
 			 hungry-delete
 			 swiper
@@ -48,7 +48,9 @@
 			 ac-php
 			 auto-complete
 			 ac-etags
+			 git-gutter-fringe
 			 git-gutter
+			 molokai-theme
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
@@ -78,8 +80,10 @@
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
 ;; 设置theme
-;; (load-theme 'monokai t)
-(load-theme 'github t)
+(load-theme 'monokai t)
+;;(load-theme 'github t)
+;;(require 'color-theme-molokai)
+;;(color-theme-molokai)
 
 ;; swiper
 (ivy-mode 1)
@@ -160,9 +164,9 @@
 (setq which-key-side-window-location 'right)
 
 ;; python confing
-(add-hook 'python-mode-hook 'anaconda-mode)
+;;(add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook
-	  '(lambda ()
+	  (lambda ()
 	    (set (make-local-variable 'company-backends) '((company-anaconda company-dabbrev-code)
 							   company-dabbrev))))
 
@@ -193,7 +197,7 @@
   (define-key php-mode-map (kbd "C-c C--") 'php-current-class)
   (define-key php-mode-map (kbd "C-c C-=") 'php-current-namespace))
 (add-hook 'php-mode-hook
-            '(lambda ()
+            (lambda ()
                (auto-complete-mode t)
                (require 'ac-php)
                (setq ac-sources  '(ac-source-php ) )
@@ -201,11 +205,16 @@
                (ac-php-core-eldoc-setup ) ;; enable eldoc
 
                (define-key php-mode-map  (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
-               (define-key php-mode-map  (kbd "C-t") 'ac-php-location-stack-back   ) ;go back
+               (define-key php-mode-map  (kbd "C-t") 'ac-php-location-stack-back) ;go back
                ))
 
-;; config git-gutter
+;; config git-gutter-fringe
 (global-git-gutter-mode t)
+(require 'git-gutter-fringe)
+(set-face-foreground 'git-gutter-fr:modified "yellow")
+(set-face-foreground 'git-gutter-fr:added    "blue")
+(set-face-foreground 'git-gutter-fr:deleted  "white")
+;;(setq git-gutter-fr:side 'right-fringe)
 
 ;; 文件末尾
 (provide 'init-packages)
