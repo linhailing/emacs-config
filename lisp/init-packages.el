@@ -48,6 +48,7 @@
 			 ac-php
 			 auto-complete
 			 ac-etags
+			 git-gutter
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
@@ -202,6 +203,9 @@
                (define-key php-mode-map  (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
                (define-key php-mode-map  (kbd "C-t") 'ac-php-location-stack-back   ) ;go back
                ))
+
+;; config git-gutter
+(global-git-gutter-mode t)
 
 ;; 文件末尾
 (provide 'init-packages)
