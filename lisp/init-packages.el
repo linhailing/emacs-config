@@ -46,6 +46,8 @@
 			 emmet-mode
 			 php-mode
 			 ac-php
+			 auto-complete
+			 ac-etags
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
@@ -159,10 +161,21 @@
 ;; python confing
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook
-	  (lambda ()
+	  '(lambda ()
 	    (set (make-local-variable 'company-backends) '((company-anaconda company-dabbrev-code)
-							   company-dabbrev)))
-	  )
+							   company-dabbrev))))
+
+;; auto-complete config
+(ac-config-default)
+;; ac-etags config
+(custom-set-variables
+  '(ac-etags-requires 1))
+(eval-after-load "etags"
+  '(progn
+      (ac-etags-setup)))
+(add-hook 'c-mode-common-hook 'ac-etags-ac-setup)
+(add-hook 'python-mode-hook 'ac-etags-ac-setup)
+
 ;; 有时候很卡的原因
 (setq tramp-ssh-controlmaster-options
       "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
