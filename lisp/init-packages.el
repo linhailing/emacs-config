@@ -16,7 +16,7 @@
 			 ;; --- Better Editor ---
 			 exec-path-from-shell
 			 ;; --- Themes ---
-			 ;; monokai-theme
+			 monokai-theme
 			 ;; solarized-theme
 			 ;; git theme
 			 ;; github-theme
@@ -50,7 +50,11 @@
 			 ac-etags
 			 git-gutter-fringe
 			 git-gutter
-			 molokai-theme
+			 helm-gtags
+			 elpy ;; python plugin
+			 company-jedi ;; python plugin
+			 ob-ipython
+			 ;;molokai-theme
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)
@@ -163,12 +167,6 @@
 (which-key-mode t)
 (setq which-key-side-window-location 'right)
 
-;; python confing
-;;(add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook
-	  (lambda ()
-	    (set (make-local-variable 'company-backends) '((company-anaconda company-dabbrev-code)
-							   company-dabbrev))))
 
 ;; auto-complete config
 (ac-config-default)
@@ -215,6 +213,10 @@
 (set-face-foreground 'git-gutter-fr:added    "blue")
 (set-face-foreground 'git-gutter-fr:deleted  "white")
 ;;(setq git-gutter-fr:side 'right-fringe)
+
+;;; Enable helm-gtags-mode
+(add-hook 'php-mode-hook 'helm-gtags-mode)
+
 
 ;; 文件末尾
 (provide 'init-packages)

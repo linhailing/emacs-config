@@ -14,7 +14,8 @@
 (require 'init-org)
 (require 'init-better-default)
 (require 'init-keybindings)
-
+;; python setting
+(require 'init-python)
 
 
 ;; 定义一个lisp测试函数

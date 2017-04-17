@@ -10,13 +10,19 @@
  '(company-minimum-prefix-length 1)
  '(custom-safe-themes
    (quote
-    ("b571f92c9bfaf4a28cb64ae4b4cdbda95241cd62cf07d942be44dc8f46c491f4" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
+    ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(evil-leader/leader "SPC")
  '(evil-want-C-u-scroll t)
  '(git-gutter:added-sign "++")
  '(git-gutter:deleted-sign "--")
  '(git-gutter:modified-sign "==")
  '(git-gutter:update-interval 2)
+ '(helm-gtags-auto-update t)
+ '(helm-gtags-ignore-case t)
+ '(helm-gtags-path-style 'relative)
+ '(package-selected-packages
+   (quote
+    (helm-gtags company exec-path-from-shell hungry-delete swiper counsel smartparens js2-mode popwin markdown-mode expand-region web-mode iedit helm-ag flycheck yasnippet auto-yasnippet evil evil-leader window-numbering powerline evil-surround evil-nerd-commenter which-key company-anaconda emmet-mode php-mode ac-php auto-complete ac-etags git-gutter-fringe git-gutter monokai-theme)))
  '(popwin:popup-window-position (quote right))
  '(popwin:popup-window-width 60))
 (custom-set-faces
