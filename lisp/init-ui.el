@@ -24,6 +24,8 @@
 ;;(set-default-font "-outline-consolas-normal-r-normal-normal-14-97-96-96-c-*-iso8859-1")
 (dolist (charset '(kana han cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font) charset
-                    (font-spec :family "Microsoft YaHei" :size 14)))
+                    (font-spec :family "Microsoft YaHei" :size 13)))
+;;(set-default-font "Monaco-12")
+
 ;; 文件末尾
 (provide 'init-ui)
