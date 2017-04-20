@@ -142,12 +142,12 @@
     (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
 
 ;; 当鼠标在括号内中让外面的括号高亮
-(define-advice show-paren-function (:around (fn) fix-show-paren-function)
-  "Highlight enclosing parens."
-  (cond ((looking-at-p "\\s(") (funcall fn))
-	(t (save-excursion
-	     (ignore-errors (backward-up-list))
-	     (funcall fn)))))
+;; (define-advice show-paren-function (:around (fn) fix-show-paren-function)
+;;   "Highlight enclosing parens."
+;;   (cond ((looking-at-p "\\s(") (funcall fn))
+;; 	(t (save-excursion
+;; 	     (ignore-errors (backward-up-list))
+;; 	     (funcall fn)))))
 
 ;; 增强occur的搜索功能，当鼠标在一个单词上时，他会自动抓取这个单词使用 M-s o 来搜索
 (defun occur-dwim ()
