@@ -34,7 +34,7 @@
 (global-set-key (kbd "M-j") 'symbol-overlay-jump-to-definition)
 (global-set-key (kbd "M-t") 'symbol-overlay-toggle-in-scope)
 (global-set-key (kbd "M-q") 'symbol-overlay-query-replace)
-(global-set-key (kbd "SPC") 'symbol-overlay-rename)
+(global-set-key (kbd "M-;") 'symbol-overlay-rename)
 (global-set-key (kbd "<f8>") 'symbol-overlay-mode)
 
 
