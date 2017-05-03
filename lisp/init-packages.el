@@ -55,6 +55,7 @@
 			 company-jedi ;; python plugin
 			 ob-ipython
 			 ;;molokai-theme
+			 symbol-overlay
 			 ) "Default packages")
 
 (setq package-selected-packages henry/packages)

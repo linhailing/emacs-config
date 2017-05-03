@@ -23,6 +23,21 @@
 ;; M-s o(occur),  M-s i(counsel-items), C-;(iedit-mode)
 (global-set-key (kbd "C-;") 'iedit-mode)
 
+;; symbol-overlay config
+(require 'symbol-overlay)
+(global-set-key (kbd "M-i") 'symbol-overlay-put)
+(global-set-key (kbd "M-u") 'symbol-overlay-jump-prev)
+(global-set-key (kbd "M-o") 'symbol-overlay-jump-next)
+(global-set-key (kbd "M-k") 'symbol-overlay-remove-all)
+(global-set-key (kbd "M-w") 'symbol-overlay-save-symbol)
+(global-set-key (kbd "M-e") 'symbol-overlay-echo-mark)
+(global-set-key (kbd "M-j") 'symbol-overlay-jump-to-definition)
+(global-set-key (kbd "M-t") 'symbol-overlay-toggle-in-scope)
+(global-set-key (kbd "M-q") 'symbol-overlay-query-replace)
+(global-set-key (kbd "SPC") 'symbol-overlay-rename)
+(global-set-key (kbd "<f8>") 'symbol-overlay-mode)
+
+
 ;; 当补全菜单显示出来以后可以使用C-n C-p来选择
 (with-eval-after-load 'company
   (define-key company-active-map (kbd "M-n") nil)
