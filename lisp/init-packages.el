@@ -55,6 +55,7 @@
 			 company-jedi ;; python plugin
 			 ob-ipython
 			 ;;molokai-theme
+			 use-package
 			 symbol-overlay
 			 ) "Default packages")
 
@@ -217,9 +218,6 @@
 
 ;;; Enable helm-gtags-mode
 (add-hook 'php-mode-hook 'helm-gtags-mode)
-
-;; markdown config
-(add-hook 'markdown-mode-hook 'orgtbl-mode)
 
 
 ;; 文件末尾

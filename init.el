@@ -16,6 +16,8 @@
 (require 'init-keybindings)
 ;; python setting
 (require 'init-python)
+;; markdown
+(require 'init-markdown)
 
 
 ;; 定义一个lisp测试函数
