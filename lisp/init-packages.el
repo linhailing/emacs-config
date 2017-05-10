@@ -46,6 +46,7 @@
 			 emmet-mode
 			 php-mode
 			 ac-php
+			 flymake-php
 			 auto-complete
 			 ac-etags
 			 git-gutter-fringe
@@ -107,8 +108,7 @@
 (setq auto-mode-alist
       (append
        '(("\\.js\\'" . js2-mode)
-	 ("\\.html\\'" . web-mode)
-	 ("\\.php\\'" . php-mode))
+	 ("\\.html\\'" . web-mode))
        auto-mode-alist))
 
 ;; popwin setting
@@ -189,25 +189,6 @@
 (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 
-;; php-mode config
-(eval-after-load 'php-mode
-  '(require 'php-ext))
-(with-eval-after-load 'php-mode
-  (require 'php-current)
-  (define-key php-mode-map (kbd "C-c C--") 'php-current-class)
-  (define-key php-mode-map (kbd "C-c C-=") 'php-current-namespace))
-(add-hook 'php-mode-hook
-            (lambda ()
-               (auto-complete-mode t)
-               (require 'ac-php)
-               (setq ac-sources  '(ac-source-php ) )
-               (yas-global-mode 1)
-               (ac-php-core-eldoc-setup ) ;; enable eldoc
-
-               (define-key php-mode-map  (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
-               (define-key php-mode-map  (kbd "C-t") 'ac-php-location-stack-back) ;go back
-               ))
-
 ;; config git-gutter-fringe
 (global-git-gutter-mode t)
 (require 'git-gutter-fringe)
@@ -215,9 +196,6 @@
 (set-face-foreground 'git-gutter-fr:added    "blue")
 (set-face-foreground 'git-gutter-fr:deleted  "white")
 ;;(setq git-gutter-fr:side 'right-fringe)
-
-;;; Enable helm-gtags-mode
-(add-hook 'php-mode-hook 'helm-gtags-mode)
 
 
 ;; 文件末尾

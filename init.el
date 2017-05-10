@@ -18,6 +18,8 @@
 (require 'init-python)
 ;; markdown
 (require 'init-markdown)
+;; php-mode
+(require 'init-php)
 
 
 ;; 定义一个lisp测试函数
