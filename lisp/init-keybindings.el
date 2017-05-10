@@ -55,6 +55,8 @@
 (global-set-key (kbd "C-w") 'backward-kill-word)
 ;; (global-set-key (kbd "C-z") 'evil-toggle-key)
 
+;; 添加语言注释/反注释快捷键
+(global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
 ;; 文件末尾
 (provide 'init-keybindings)
