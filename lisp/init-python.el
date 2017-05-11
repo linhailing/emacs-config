@@ -19,26 +19,17 @@
 ;; elpy python 2
 (elpy-enable)
 (setq elpy-rpc-backend "jedi")
-;; (org-babel-do-load-languages
-;;  'org-babel-load-languages
-;;  '((ipython . t)
-;;    ;; other languages..
-;;    ))
+;; (elpy-use-ipython)
 
-;; Python customizations
-;; (defun my-python-fill-string (&optional justify)
-;;   (let ((old-fill-column fill-column))
-;;     (setq fill-column 72)
-;;     (python-fill-string justify)
-;;     (setq fill-column old-fill-column)
-;;   ))
+;; 添加提示框
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (set (make-local-variable 'company-backends) '(elpy-company-backend company-dabbrev company-files flycheck-mode))))
 
 (add-hook 'python-mode-hook
-          (lambda () (interactive)
-            (setq python-fill-docstring-style 'pep-257-nn)
-            (set-fill-column 85)
-            ;; (setq python-fill-string-function my-python-fill-string)
-            ))
+	  '(lambda ()
+	     (auto-complete-mode -1)
+	     ))
 
 ;; 文件末尾
 (provide 'init-python)
