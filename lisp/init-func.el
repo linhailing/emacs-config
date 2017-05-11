@@ -27,5 +27,22 @@
   (setq js-indent-level 2))
 (add-hook 'js2-mode-hook 'set-js-index-size)
 
+
+;; 定义自动的函数，这个函数的功能是
+(defun my-comment-name()
+  (interactive)
+  (insert "'''")
+  (eval (newline-and-indent))
+  (insert "Author: henry")
+  (eval (newline-and-indent))
+  (insert "Create date: "(format-time-string "%Y/%m/%d %H:%M:%S"(current-time)))
+  (eval (newline-and-indent))
+  (insert "Func: ")
+  (eval (newline-and-indent))
+  (insert "Desc: ")
+  (eval (newline-and-indent))
+  (insert "'''"))
+(global-set-key (kbd "C-M-p") 'my-comment-name)
+
 ;; 文件末尾
 (provide 'init-func)

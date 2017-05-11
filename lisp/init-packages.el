@@ -46,6 +46,7 @@
 			 emmet-mode
 			 php-mode
 			 ac-php
+			 company-php
 			 flymake-php
 			 auto-complete
 			 ac-etags
