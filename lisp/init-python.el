@@ -24,7 +24,7 @@
 ;; 添加提示框
 (add-hook 'python-mode-hook
 	  (lambda ()
-	    (set (make-local-variable 'company-backends) '(elpy-company-backend company-dabbrev company-files flycheck-mode))))
+	    (set (make-local-variable 'company-backends) '((company-files flycheck-mode) company-dabbrev))))
 
 (add-hook 'python-mode-hook
 	  '(lambda ()
