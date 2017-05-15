@@ -124,14 +124,6 @@
 ;; (global-flycheck-mode t)
 (add-hook 'js2-mode-hook 'flycheck-mode)
 
-;; yasnippet
-;;(yas-reload-all)
-;;(add-hook 'prog-mode-hook #'yas-minor-mode)
-(require 'yasnippet)
-;;(yas-global-mode 1)
-(yas-reload-all)
-(add-hook 'prog-mode-hook #'yas-minor-mode)
-
 ;; evil
 (evil-mode t)
 (setcdr evil-insert-state-map nil)

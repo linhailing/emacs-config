@@ -14,6 +14,7 @@
 (require 'init-org)
 (require 'init-better-default)
 (require 'init-keybindings)
+(require 'init-yas)
 ;; python setting
 (require 'init-python)
 ;; markdown
