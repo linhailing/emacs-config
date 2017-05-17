@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: comments
+# key: comment
+# --
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# Author: henry
+# Python 3.5
+$0
